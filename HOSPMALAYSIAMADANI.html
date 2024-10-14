@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Website - Combined</title>
+
+    <!-- CSS Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .appointment-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        .appointment-btn:hover {
+            background-color: #0056b3;
+        }
+
+       .pharmacy-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        .pharmacy-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .nav-buttons {
+            display: flex; 
+            justify-content: center; /* Center the buttons */
+            gap: 5px; /* Adjust this value to control the space between buttons */
+        }
+
+        /* Banner Section Styles */
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            padding: 50px;
+            background: linear-gradient(135deg, #004d7a 0%, #008793 50%, #00bf72 100%);
+            color: white;
+            margin-top: 80px; /* To avoid overlap with fixed navbar */
+         }
+
+        .banner-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .banner-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+        }
+
+        .banner-content p {
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .banner-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Image size control */
+        .banner-image img {
+            width: 400px; /* Set the width of the image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px;
+        }
+
+
+        .section {
+            padding: 40px 20px;
+            background-color: #fff;
+            margin: 20px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .view-all {
+            text-align: right;
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        .view-all a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .card .read-more {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .card .read-more:hover {
+            background-color: #0056b3;
+        }
+
+        <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet Our Doctors</title>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    #meet-our-doctors {
+      text-align: center;
+      padding: 50px;
+      background-color: #fff;
+    }
+
+    #meet-our-doctors h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    #meet-our-doctors a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    #meet-our-doctors a:hover {
+      color: #0056b3;
+    }
+
+    .doctor-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .doctor-card {
+      width: 250px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .doctor-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .doctor-card h3 {
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+
+    .doctor-card p {
+      color: #666;
+      margin: 10px 0;
+    }
+
+    .contact-icons a {
+      margin: 10px;
+      color: #007bff;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .contact-icons a:hover {
+      color: #0056b3;
+    }
+
+    .view-all {
+      margin-top: 30px;
+      display: inline-block;
+      font-size: 1.1em;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .doctor-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .doctor-card {
+        width: 90%;
+      }
+    }
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .working-hours, .booking-form {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            border-radius: 5px; /* Added border radius */
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button {
+            width: auto;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px; /* Added border radius */
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049; /* Hover effect for button */
+        }
+        .working-hours p {
+            line-height: 1.8;
+        }
+        
+        <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1000px;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .left {
+            width: 48%;
+        }
+        .right {
+            width: 48%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .category {
+            margin: 10px 0;
+            cursor: pointer;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .medicines {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .medicine-item {
+            margin: 5px 0;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #confirmationMessage {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+            border-radius: 5px;
+        }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: white; /* Set the background to white */
+            border: 1px solid #f4b414; /* Optional: Add a border in yellow to preserve the look */
+        }
+        .column {
+            width: 30%;
+        }
+        h2 {
+            font-size: 1.5em;
+        }
+        p, a {
+            font-size: 1em;
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            color: blue;
+            cursor: pointer;
+        }
+        .icon {
+            margin-right: 10px;
+        }
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 768px) {
+    /* Styles for tablets and mobile devices */
+             .container {
+             width: 100%;
+             padding: 10px;
+        }
+             .button {
+             font-size: 14px;
+        }
+        }
+
+       @media only screen and (max-width: 480px) {
+    /* Styles for smaller mobile devices */
+             .container {
+             width: 100%;
+             padding: 5px;
+        }
+             .button {
+             font-size: 12px;
+        }
+        }
+
+    </style>
+    <script>
+        function showMessage(message) {
+            document.getElementById('message').innerText = message;
+        }
+    </script>
+    </style>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Hospital Malaysia Madani</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#doctor">Specialist</a></li>
+        </ul>
+        <div class="nav-buttons">
+        <button class="nav-button" onclick="scrollToAppointment()">Appointment</button>
+        <button class="nav-button" onclick="scrollToPharmacy()">Pharmacy</button>
+    </div>
+
+    </nav>
+
+    <!-- Section 1: Banner -->
+    <section class="banner" id="home">
+        <div class="banner-content">
+            <h1>We Take Care of Your Healthy Health</h1>
+            <p>Come and check your health with us or you will regret it all your whole life! We provide online appointment booking and medicine purchase services to save your time and energy!</p>
+        </div>
+        <div class="banner-image">
+            <img src="https://i.pinimg.com/564x/2d/f0/4c/2df04c0b72b6d264027a7378b3624772.jpg" alt="Doctor Image">
+        </div>
+    </section>
+
+    <!-- Section 2: Services -->
+    <section class="section" id="services">
+        <div class="section-title">Our Services</div>
+        <div class="view-all"><a href="#">View All</a></div>
+
+        <div class="card-grid">
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/14/6a/06/146a0665b6495834e994d9235884169e.jpg" alt="Preventive Care">
+                <h3>Preventive Care</h3>
+                <p>We care about your health, come and check with us...</p>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/564x/94/a3/be/94a3be482b1a3ed54386e6406d831257.jpg" alt="Home Treatment">
+                <h3>Home Treatment</h3>
+                <p>We care about your health, come and check with us...</p>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/564x/4b/d2/71/4bd2718b1969f99195f2b489da11f44d.jpg" alt="Cardiology Services">
+                <h3>Cardiology Services</h3>
+                <p>We care about your health, come and check with us...</p>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/564x/a0/cb/e1/a0cbe18b0aaa6fc8f26c63329e757b5b.jpg" alt="Routine Checkups">
+                <h3>Routine Checkups</h3>
+                <p>We care about your health, come and check with us...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Our Specialist -->
+    <section class="section" id="doctor">
+        <div class="section-title">Our Specialists</div>
+        <div class="view-all"><a href="#">View All</a></div>
+
+        <div class="card-grid">
+            <div class="card">
+                <img src="https://i.pinimg.com/564x/91/ca/bb/91cabbcc87c4c75f8a34d4d305e001cf.jpg" alt="Dental Care">
+                <h3>Dental Care</h3>
+                <p>15+ Doctors</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/0a/69/7d/0a697d07b7573f221ecef33b7ad36ada.jpg" alt="Cardiology">
+                <h3>Cardiology</h3>
+                <p>33+ Doctors</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+
+            <div class="card">
+                <img src="https://i.pinimg.com/564x/65/b3/ee/65b3ee115f14d13153559394ce82ce2a.jpg" alt="Eye Care">
+                <h3>Eye Care</h3>
+                <p>18+ Doctors</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+
+            <div class="card">
+                <img src="https://i.pinimg.com/564x/d3/33/f1/d333f141e6b0a36f8b694aa246e62698.jpg" alt="Gynecologists">
+                <h3>Gynecologists</h3>
+                <p>25+ Doctors</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+
+            <div class="card">
+                <img src="https://i.pinimg.com/564x/a9/d9/0f/a9d90fda08927686a23788ffe3a7c7a3.jpg" alt="Neurology Care">
+                <h3>Neurology Care</h3>
+                <p>10+ Doctors</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </div>
+    </section>
+
+        <!-- Section 4: Meet Our Doctors (from doctor.html) -->
+    <section id="meet-our-doctors">
+        <h2>Meet Our Doctors</h2>
+        <div class="doctor-grid">
+            <div class="doctor-card">
+                <img src="https://i.pinimg.com/736x/ad/c4/ab/adc4ab6ebff5bbe5236dc614a1cc73b2.jpg" alt="Dr. Dahlia Malik">
+                <h3>Dr. Dahlia Malik</h3>
+                <p>Cardiologist</p>
+                <div class="contact-icons">
+                    <a href="tel:+123456789"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:doctor@example.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://i.pinimg.com/736x/84/48/22/844822ff6019b2cc61f3c1d3b859172b.jpg" alt="Dr. Adam Ruzaini">
+                <h3>Dr. Adam Ruzaini</h3>
+                <p>Neurologist</p>
+                <div class="contact-icons">
+                    <a href="tel:+123456789"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:doctor@example.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://i.pinimg.com/564x/af/7d/40/af7d40ae22177c048fcf93fd5345c289.jpg" alt="Dr. Xiu Ling">
+                <h3>Dr. Xiu Ling</h3>
+                <p>Dentist</p>
+                <div class="contact-icons">
+                    <a href="tel:+123456789"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:doctor@example.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+           <div class="doctor-card">
+               <img src="https://i.pinimg.com/564x/98/54/2f/98542f28fe407ce7c7a20b1631551ab0.jpg" alt="Dr. Jasmine">
+               <h3>Dr. Jasmine</h3>
+               <p>Dermatologist</p>
+               <div class="contact-icons">
+                   <a href="tel:+123456789"><i class="fas fa-phone"></i></a>
+                   <a href="mailto:doctor@example.com"><i class="fas fa-envelope"></i></a>
+               </div>
+            </div>
+            
+           <div class="doctor-card">
+               <img src="https://i.pinimg.com/564x/e4/fe/fa/e4fefa0286d9453c5ae70c8315e9ce02.jpg" alt="Dr. Ahmad Ali">
+               <h3>Dr. Ahmad Ali</h3>
+               <p>Optometrist</p>
+               <div class="contact-icons">
+                   <a href="tel:+123456789"><i class="fas fa-phone"></i></a>
+                   <a href="mailto:doctor@example.com"><i class="fas fa-envelope"></i></a>
+               </div>
+            </div>
+
+            <div class="doctor-card">
+               <img src="https://i.pinimg.com/564x/4e/2b/8a/4e2b8ae7622c3dbd6e6c2b2d2ba7d82c.jpg" alt="Dr. Esyraf Zaid">
+               <h3>Dr. Esyraf Zaid</h3>
+               <p>Phychiatrist</p>
+               <div class="contact-icons">
+                   <a href="tel:+123456789"><i class="fas fa-phone"></i></a>
+                   <a href="mailto:doctor@example.com"><i class="fas fa-envelope"></i></a>
+               </div>
+            </div>
+      
+            <div class="doctor-card">
+               <img src="https://i.pinimg.com/564x/2f/8b/8e/2f8b8e9a0926d074d0e33ef7b3068ef7.jpg" alt="Dr. Neyli">
+               <h3>Dr. Neyli</h3>
+               <p>Phychiatrist</p>
+               <div class="contact-icons">
+                   <a href="tel:+123456789"><i class="fas fa-phone"></i></a>
+                   <a href="mailto:doctor@example.com"><i class="fas fa-envelope"></i></a>
+               </div>
+            </div>
+
+            
+              <a href="#" class="view-all">View All »</a>
+            </section>
+
+            
+ <!-- Section 6: Appointment Booking (from booking appointment.html) -->
+    <section class="section" id="booking">
+        <h2 class="section-title">Book Your Appointment</h2>
+              </style>
+    <script>
+        function confirmSubmission() {
+            const name = document.querySelector('input[name="name"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const phone = document.querySelector('input[name="phone"]').value;
+            const date = document.querySelector('input[name="date"]').value;
+            const time = document.querySelector('input[name="time"]').value;
+
+            const message = `Please confirm your details:\n\n` +
+                            `Name: ${name}\n` +
+                            `Email: ${email}\n` +
+                            `Phone: ${phone}\n` +
+                            `Date: ${date}\n` +
+                            `Time: ${time}\n\n` +
+                            `Do you want to proceed?`;
+
+            return confirm(message);
+        }
+    </script>
+</head>
+<body>
+        <div class="container">
+        <!-- Left Section: Working Hours -->
+        <div class="working-hours">
+            <h2>Working Hours</h2>
+            <p>This hospital is only operating on the following days in the following hours:</p>
+            <p><strong>Sunday - Monday:</strong> 8 AM - 8 PM</p>
+            <p><strong>Tuesday - Wednesday:</strong> 7 AM - 8 PM</p>
+            <p><strong>Thursday - Friday:</strong> 8 AM - 9 PM</p>
+            <p><strong>Saturday, Public Holidays:</strong> Closed</p>
+            <p><strong>Emergency:</strong> 24/7 Emergency</p>
+            <p>For emergency, you have to contact us or book an appointment.</p>
+        </div>
+
+        <!-- Right Section: Booking Appointment Form -->
+        <div class="booking-form">
+            <h2>Appointment Form</h2>
+            <form action="process_appointment.php" method="POST" onsubmit="return confirmSubmission()">
+                <label for="name">Name:</label>
+                <input type="text" name="name" placeholder="Enter your name" required>
+
+                <label for="age">Age:</label>
+                <input type="age" name="age" placeholder="Enter your age (in number)" required>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="choose subject">Choose Subject</label>
+                <select id="choose subject" name="choose subject" required>
+                    <option value="Routine Checkup">Routine Checkup</option>
+                    <option value="make enquiry">Make Enquiry</option>
+                    <option value="visit doctor">Visit Doctor</option>
+                    <option value="Dental Care">Dental Care</option>
+                    <option value="other">Other</option>
+                </select>
+                 
+
+                <label for="date">Date:</label>
+                <input type="date" name="date" required>
+
+                <label for="time">Time:</label>
+                <input type="time" name="time" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div> 
+<script>
+    function scrollToAppointment() {
+        document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+            </section>
+
+ <!-- Section 7: Pharmacy (from pharmacy.html) -->
+<section class="section" id="pharmacy">
+    <h2 class="section-title">Pharmacy</h2>
+     <script>
+        function confirmSubmission() {
+            const name = document.querySelector('input[name="name"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const phone = document.querySelector('input[name="phone"]').value;
+            const date = document.querySelector('input[name="date"]').value;
+            const time = document.querySelector('input[name="time"]').value;
+
+            const message = `Please confirm your details:\n\n` +
+                            `Name: ${name}\n` +
+                            `Email: ${email}\n` +
+                            `Phone: ${phone}\n` +
+                            `Date: ${date}\n` +
+                            `Time: ${time}\n\n` +
+                            `Do you want to proceed?`;
+
+            return confirm(message);
+        }
+    </script>
+
+<script>
+    function scrollToPharmacy() {
+        document.getElementById('pharmacy').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+        <div class="container">
+        <!-- Left: List of Medicines -->
+        <div class="left">
+            <h2>Available Medicines</h2>
+            <div class="category" onclick="toggleMedicines('painRelievers')">Pain Relievers</div>
+            <div id="painRelievers" class="medicines">
+                <div class="medicine-item">Paracetamol - RM 5 - RM 15</div>
+                <div class="medicine-item">Ibuprofen - RM 8 - RM 20</div>
+            </div>
+
+            <div class="category" onclick="toggleMedicines('antibiotics')">Antibiotics</div>
+            <div id="antibiotics" class="medicines">
+                <div class="medicine-item">Amoxicillin - RM 15 - RM 30</div>
+                <div class="medicine-item">Ciprofloxacin - RM 20 - RM 40</div>
+            </div>
+
+            <div class="category" onclick="toggleMedicines('antihistamines')">Antihistamines</div>
+            <div id="antihistamines" class="medicines">
+                <div class="medicine-item">Loratadine - RM 10 - RM 25</div>
+                <div class="medicine-item">Cetirizine - RM 12 - RM 20</div>
+            </div>
+
+            <div class="category" onclick="toggleMedicines('sedatives')">Sedatives</div>
+            <div id="sedatives" class="medicines">
+                <div class="medicine-item">Diazepam - RM 15 - RM 30</div>
+                <div class="medicine-item">Lorazepam - RM 20 - RM 40</div>
+            </div>
+
+            <div class="category" onclick="toggleMedicines('digestiveMedications')">Digestive Medications</div>
+            <div id="digestiveMedications" class="medicines">
+                <div class="medicine-item">Omeprazole - RM 20 - RM 40</div>
+                <div class="medicine-item">Loperamide - RM 10 - RM 20</div>
+            </div>
+
+            <div class="category" onclick="toggleMedicines('coughAndCold')">Cough and Cold Medications</div>
+            <div id="coughAndCold" class="medicines">
+                <div class="medicine-item">Dextromethorphan - RM 15 - RM 30</div>
+                <div class="medicine-item">Guaifenesin - RM 20 - RM 40</div>
+            </div>
+
+            <div class="category" onclick="toggleMedicines('antiInflammatories')">Anti-inflammatory Medications</div>
+            <div id="antiInflammatories" class="medicines">
+                <div class="medicine-item">Hydrocortisone Cream - RM 10 - RM 20</div>
+                <div class="medicine-item">Prednisone - RM 15 - RM 30</div>
+            </div>
+        </div>
+
+        <!-- Right: Purchase Form -->
+        <div class="right">
+            <h2>Purchase Form</h2>
+            <form action="send-email.php" method="POST" onsubmit="return confirmSubmission()">                                    
+                <label for="name">Full Name</label>  
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="medicine">Select Medicine</label>
+                <select id="medicine" name="medicine" required>
+                    <option value="Paracetamol">Paracetamol</option>
+                    <option value="Ibuprofen">Ibuprofen</option>
+                    <option value="Amoxicillin">Amoxicillin</option>
+                    <option value="Ciprofloxacin">Ciprofloxacin</option>
+                    <option value="Loratadine">Loratadine</option>
+                    <option value="Cetirizine">Cetirizine</option>
+                    <option value="Diazepam">Diazepam</option>
+                    <option value="Lorazepam">Lorazepam</option>
+                    <option value="Omeprazole">Omeprazole</option>
+                    <option value="Loperamide">Loperamide</option>
+                    <option value="Dextromethorphan">Dextromethorphan</option>
+                    <option value="Guaifenesin">Guaifenesin</option>
+                    <option value="Hydrocortisone Cream">Hydrocortisone Cream</option>
+                    <option value="Prednisone">Prednisone</option>
+                </select>
+
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" min="1" required>
+
+                <label for="total">Total Price (RM)</label>
+                <input type="number" id="total" name="total" readonly>
+
+                <input type="submit" value="Submit Order">
+            </form>
+
+            <div id="confirmationMessage"></div>
+        </div>
+    </div>
+
+<script>
+        function toggleMedicines(category) {
+            const medicines = document.getElementById(category);
+            medicines.style.display = (medicines.style.display === "block") ? "none" : "block";
+        }
+
+        document.getElementById('medicine').addEventListener('change', updateTotal);
+        document.getElementById('quantity').addEventListener('input', updateTotal);
+
+        function updateTotal() {
+            const medicinePrices = {
+                'Paracetamol': 5,
+                'Ibuprofen': 8,
+                'Amoxicillin': 15,
+                'Ciprofloxacin': 20,
+                'Loratadine': 10,
+                'Cetirizine': 12,
+                'Diazepam': 15,
+                'Lorazepam': 20,
+                'Omeprazole': 20,
+                'Loperamide': 10,
+                'Dextromethorphan': 15,
+                'Guaifenesin': 20,
+                'Hydrocortisone Cream': 10,
+                'Prednisone': 15
+            };
+
+            const medicine = document.getElementById('medicine').value;
+            const quantity = parseInt(document.getElementById('quantity').value) || 0;
+            const price = medicinePrices[medicine] || 0;
+            document.getElementById('total').value = price * quantity;
+        }
+
+        function showConfirmation() {
+            const name = document.querySelector('name').value;
+            const medicine = document.getElementById('medicine').value;
+            const quantity = document.getElementById('quantity').value;
+            const total = document.getElementById('total').value;
+
+            const confirmationMessage = `Thank you, ${name}! You have purchased ${quantity} ${medicine}(s) for a total of RM ${total}. A receipt will be sent to your email.`;
+            document.getElementById('confirmationMessage').innerText = confirmationMessage;
+            document.getElementById('confirmationMessage').style.display = 'block';
+
+            // Prevent form submission for demonstration
+            return false;
+        }
+    </script>
+
+<div class="container">
+        <div class="column">
+            <h2>Contact Us</h2>
+            <p>
+                <span class="icon">📍</span> Hospital Malaysia Madani<br>
+                81111, Kota Madani<br>
+                Kota Tinggi, Uganda.
+            </p>
+            <p>
+                <span class="icon">📞</span> <a onclick="showMessage('No. Telefon: 07-012 3456')">07-012 3456 </a><br>
+                <span class="icon">📠</span> <a onclick="showMessage('No. Faks: 07-0123456')">07-0123456</a>
+            </p>
+            <p>
+                <span class="icon">✉️</span> <a onclick="showMessage('Emel: 123@example.com.my')">123@example.com.my</a>
+            </p>
+        </div>
+
+        <div class="column">
+            <h2>Provision</h2>
+            <ul>
+                <li><a onclick="showMessage('Our clinic is dedicated to offering top-notch health services to the community. We provide everything from regular health checkups to specialized treatments for various conditions.')">Home</a></li>
+                <li><a onclick="showMessage('With over 20 years of service, our clinic has treated thousands of patients with a wide range of medical conditions. Our team of experienced doctors, nurses, and staff is committed to offering compassionate and comprehensive care.')">Experience</a></li>
+                <li><a onclick="showMessage('Our clinic was founded with the goal of providing affordable and quality healthcare to everyone. We believe that health is a right, not a privilege, and strive to ensure that all of our patients receive the best care possible.')">About Us</a></li>
+            </ul>
+        </div
+
+        <div class="column">
+            <h2>Working Hour</h2>
+            <p>
+                <span class="icon">🕒</span> Sunday - Monday: 8 AM - 8 PM<br>
+                <span class="icon">🕒</span> Tuesday - Wednesday: 7 AM - 8 PM<br>
+                <span class="icon">🕒</span> Thursday - Friday: 8 AM - 9 PM<br>
+                <span class="icon">🕒</span> Saturday, Public Holidays: Closed<br>
+                <span class="icon">🕒</span> Emergency: 24/7 Emergency<br>
+            </p>
+        </div>
+    </div>
+
+    <div id="message" class="message"></div>
+
+</body>
+</html>
